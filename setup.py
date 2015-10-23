@@ -2,8 +2,8 @@ from distutils.core import setup
 
 setup(name='kao_dict',
       version='0.0.1',
-      description="",
-      author='',
-      author_email='',
-      packages=['kao_dict'],
+      description="Wrapper to a Dictionary to allow access to attrs via .attr",
+      author='Chris Loew',
+      author_email='cloew123@gmail.com',
+      py_modules =['kao_dict'],
      )
