@@ -1,6 +1,6 @@
 from kao_decorators import proxy_for
 
-@proxy_for('_dict', ['__iter__', '__contains__', '__len__', '__getitem__', '__setitem__', 'keys', 'values', 'items'])
+@proxy_for('_dict', ['__iter__', '__contains__', '__len__', '__getitem__', '__setitem__', '__repr__', 'keys', 'values', 'items'])
 class KaoDict(object):
     """ Represents a Dictionary """
     INSTANCE_ATTRS = {'_dict'}
