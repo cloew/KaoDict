@@ -1,15 +1,12 @@
-from kao_decorators import proxy_for
+from collections.abc import MutableMapping
 
-@proxy_for('_dict', ['__iter__', '__contains__', '__len__', '__getitem__', '__setitem__', '__repr__', 'keys', 'values', 'items'])
-class KaoDict(object):
+class KaoDict(MutableMapping):
     """ Represents a Dictionary """
     INSTANCE_ATTRS = {'_dict'}
     
-    def __init__(self, d=None):
+    def __init__(self, *args, **kwargs):
         """ Initialize with the dictionary """
-        if d is None:
-            d = {}
-        self._dict = d
+        self._dict = dict(*args, **kwargs)
             
     def __getattr__(self, attr):
         """ Return the value for the given attr """
@@ -24,3 +21,19 @@ class KaoDict(object):
             object.__setattr__(self, attr, value)
         else:
             self._dict[attr] = value
+            
+    # Mapping overrides
+    def __getitem__(self, key):
+        return self._dict[key]
+        
+    def __setitem__(self, key, value):
+        self._dict[key] = value
+        
+    def __delitem__(self, key):
+        del self._dict[key]
+        
+    def __iter__(self, key):
+        return iter(self._dict)
+        
+    def __len__(self):
+        return len(self._dict)
