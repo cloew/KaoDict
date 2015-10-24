@@ -37,3 +37,7 @@ class KaoDict(MutableMapping):
         
     def __len__(self):
         return len(self._dict)
+        
+    def __repr__(self):
+        """ Return the String representation of the dictionary """
+        return repr(self._dict)
