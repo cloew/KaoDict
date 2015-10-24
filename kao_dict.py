@@ -32,7 +32,7 @@ class KaoDict(MutableMapping):
     def __delitem__(self, key):
         del self._dict[key]
         
-    def __iter__(self, key):
+    def __iter__(self):
         return iter(self._dict)
         
     def __len__(self):
